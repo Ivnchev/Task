@@ -52,7 +52,7 @@ export const Navigation: React.FunctionComponent = () => {
                     <img className={classes.logo} src={logo} alt="logo" />
                 </Link>
                 <div className={classes.menuWrapper}>
-                    <Link to="/reset-password" >
+                    <Link to="/login" >
                         {
                             user
                             ? (<AccountBoxIcon className={classes.userLogo} />)
