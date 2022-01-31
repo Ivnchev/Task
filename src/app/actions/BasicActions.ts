@@ -1,29 +1,30 @@
+import { ActionCreator, Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { AuthActionTypes } from "../action-types";
 
-import { ActionCreator, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { IBasicState } from '../reducers/BasicReducer';
-
-export enum BasicActionTypes {
-    BASIC = 'BASIC',
+export interface IAuthState {
+  auth: any;
 }
 
-export interface IBasicAnyAction {
-    type: BasicActionTypes.BASIC;
-    property: any;
+export interface IAuthAnyAction {
+  type: AuthActionTypes.AUTH;
+  property: any;
 }
 
-export type BasicActions = IBasicAnyAction;
+export type AuthActions = IAuthAnyAction;
 
-export const BasicAction: ActionCreator<ThunkAction<Promise<any>, IBasicState, null, IBasicAnyAction>> = () => {
-    return async (dispatch: Dispatch) => {
-        try {
-            // Your logic here
-            dispatch({
-                property: null,
-                type: BasicActionTypes.BASIC
-            })
-        } catch (err) {
-            console.error(err);
-        }
-    };
+export const AuthAction: ActionCreator<
+  ThunkAction<Promise<any>, IAuthState, null, IAuthAnyAction>
+> = (data) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      // Your logic here
+      dispatch({
+        auth: data,
+        type: AuthActionTypes.AUTH,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 };

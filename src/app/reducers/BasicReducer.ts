@@ -1,25 +1,19 @@
 import { Reducer } from 'redux';
-import { BasicActions, BasicActionTypes } from '../actions/BasicActions';
+import { AuthActionTypes } from '../action-types';
+import { AuthActions, IAuthState } from '../actions/BasicActions';
 
-export interface IBasicState {
-  property: any;
-}
-
-const initialBasicState: IBasicState = {
-  property: null
+const initialAuthState: IAuthState = {
+  auth: null
 };
 
-export const BasicReducer: Reducer<IBasicState, BasicActions> = (
-  state = initialBasicState,
-  action
-) => {
+export const AuthReducer: Reducer<IAuthState, AuthActions> = (state = initialAuthState,action) => {
 
   switch (action.type) {
 
-    case BasicActionTypes.BASIC: {
+    case AuthActionTypes.AUTH: {
       return {
         ...state,
-        property: action.property
+        auth: action.property
       };
     }
 
